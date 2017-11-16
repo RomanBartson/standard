@@ -1,0 +1,11 @@
+account_homepage:
+    path: /account
+    defaults: { _controller: AccountBundle:Default:index }
+
+account_create:
+    path: /account/create
+    defaults: { _controller: AccountBundle:Default:create }
+
+account_login:
+    path: /account/login
+    defaults: { _controller: AccountBundle:Default:login }
