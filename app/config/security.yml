@@ -4,7 +4,8 @@ security:
 
     encoders:
         AccountBundle\Entity\Account:
-            algorithm: bcrypt
+            #algorithm: bcrypt
+            algorithm: plaintext
 
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:

@@ -44,9 +44,9 @@ class DefaultController extends Controller
         /*$errors = $form->getErrors();
         var_dump($errors);*/
         if ($form->isSubmitted() && $form->isValid()) {
-            $passwordEncoder = $this->get('security.password_encoder');
-
-            $account->setPassword($passwordEncoder->encodePassword($account, $account->getPlainPassword()));
+            //$passwordEncoder = $this->get('security.password_encoder');
+            //$account->setPassword($passwordEncoder->encodePassword($account, $account->getPlainPassword()));
+            $account->setPassword($account->getPlainPassword());
 
             $em = $this->getDoctrine()->getManager(); // get entity manager
             $em->persist($account); // persist changes
