@@ -9,3 +9,6 @@ account_create:
 account_login:
     path: /account/login
     defaults: { _controller: AccountBundle:Default:login }
+
+account_logout:
+    path: /account/logout

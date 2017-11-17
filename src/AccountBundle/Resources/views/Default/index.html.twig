@@ -1,5 +1,19 @@
-<header>Welcome, </header>
-<nav>
-    <a href="/account/create">Create account</a>
-</nav>
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section>
+        <header>Welcome, </header>
+        <nav>
+            {% if user %}
+                <section>
+                    {{ user.id }} {{ user.username }} {{ user.email }}
+                </section>
+                <a href="/account/logout">Logout</a>
+            {% else %}
+                <a href="/account/create">Create account</a>
+                <a href="/account/login">Login</a>
+            {% endif %}
+        </nav>
+    </section>
+{% endblock %}
 

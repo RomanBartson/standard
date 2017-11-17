@@ -14,11 +14,20 @@ class DefaultController extends Controller
 {
     public function indexAction(Request $request)
     {
-        var_dump($request->get('id'));
-        return $this->render('AccountBundle:Default:index.html.twig');
+        return $this->render('AccountBundle:Default:index.html.twig', [
+            'user' => $this->getUser()
+        ]);
+    }
+
+    public function logoutAction() {
+
     }
 
     public function loginAction(Request $request) {
+
+        if ($this->getUser()){
+            return $this->redirect('account_homepage');
+        }
 
         $authUtils = $this->get('security.authentication_utils');
         $error = $authUtils->getLastAuthenticationError();
@@ -34,6 +43,9 @@ class DefaultController extends Controller
 
     public function createAction(Request $request)
     {
+        if ($this->getUser()){
+            return $this->redirect('account_homepage');
+        }
 
         $account = new Account();
 
@@ -53,7 +65,7 @@ class DefaultController extends Controller
             $em->flush();
 
             return $this->redirect($this->generateUrl(
-                'account_homepage',
+                'account_login',
                 ['id' => $account->getId()]
             ));
         }
