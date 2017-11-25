@@ -8,7 +8,9 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+    <section class="container">
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+    </section>
+    {% block javascripts %}{% endblock %}
     </body>
 </html>

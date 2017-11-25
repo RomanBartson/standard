@@ -25,7 +25,9 @@ class AccountBaseType extends AbstractType
         parent::buildForm($builder, $option);
 
         $builder
-            ->add('email', EmailType::class);
+            ->add('email', EmailType::class, [
+                'attr' => ['class' => 'form-control']
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

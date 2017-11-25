@@ -12,7 +12,9 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\LessThan;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 
 class AccountCreateType extends AccountBaseType
@@ -22,8 +24,13 @@ class AccountCreateType extends AccountBaseType
         parent::buildForm($builder, $options);
 
         $builder->add('username', TextType::class, [
-            'constraints' => new LessThan(10)
+            'constraints' => [
+                new Length(['max' => 10]),
+                new NotBlank()
+            ],
+            'attr' => array('class'=>'form-control'),
         ])->add('plainPassword', RepeatedType::class, [
+            'constraints' => new NotBlank(),
             'type' => PasswordType::class,
             'first_options'  => ['label' => 'Password'],
             'second_options' => ['label' => 'Repeat Password'],
